@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using SampleMVC.Core.Entities;
 using SampleMVC.Infraestructure.Interfaces;
 using SampleMVC.WebApp.Dtos;
 using SmapleMVC.SharedKernel.Interfaces;
+using System.Collections.Generic;
 //using SampleMVC.Infraestructure.Models;
 using System.Threading.Tasks;
 
@@ -13,10 +15,12 @@ namespace SampleMVC.WebApp.Controllers
     {
         private readonly IPropertyApiService _propertyApiService;
         private readonly IRepository _repository;
-        public PropertyController(IPropertyApiService propertyApiService, IRepository repository)
+        private readonly IMapper _mapper;
+        public PropertyController(IPropertyApiService propertyApiService, IRepository repository, IMapper mapper)
         {
             _propertyApiService = propertyApiService;
             _repository = repository;
+            _mapper = mapper;
         }
 
         // GET: ApiMicrosoftController
@@ -30,8 +34,9 @@ namespace SampleMVC.WebApp.Controllers
         public async Task<IActionResult> GetAllProperties()
         {
             var response = await _propertyApiService.GetPropertyListFromApiAsync();
-           
-            return Json(response);
+            var viewData = _mapper.Map<List<PropertyDto>>(response);
+
+            return View(viewData);
         }
 
         [HttpPost]

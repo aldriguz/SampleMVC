@@ -1,0 +1,31 @@
+﻿@model IList<SampleMVC.WebApp.Dtos.PropertyDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of properties</h1>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Address</th>
+            <th scope="col">Year Built</th>
+            <th scope="col">List Price</th>
+            <th scope="col">Monthly Rent</th>
+            <th scope="col">Gross Yield</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th>@item.Address</th>
+            <td>@item.YearBuilt</td>
+            <td>@item.ListPrice</td>
+            <td>@item.MonthlyRent</td>
+            <td>@item.GrossYield</td>
+        </tr>
+        }
+    </tbody>
+</table>

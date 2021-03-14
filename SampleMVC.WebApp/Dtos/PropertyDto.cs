@@ -4,8 +4,8 @@
     {
         public string Address { get; set; }
         public string YearBuilt { get; set; }
-        public decimal ListPrice { get; set; }
-        public decimal MonthlyRent { get; set; }
-        public decimal GrossYield { get; set; }
+        public double? ListPrice { get; set; }
+        public double? MonthlyRent { get; set; }
+        public double? GrossYield { get; set; }
     }
 }

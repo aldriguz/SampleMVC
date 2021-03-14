@@ -3,9 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using SampleMVC.Infraestructure.Interfaces;
 using SampleMVC.Infraestructure.Api;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
+using SmapleMVC.SharedKernel.Interfaces;
+using SampleMVC.Infraestructure.Data;
 
 namespace SampleMVC.WebApp
 {
@@ -22,8 +26,14 @@ namespace SampleMVC.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //services.AddDbContext<SampleMvcContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SampleMVC")));
+
             services.AddScoped<IPropertyApiService, PropertyApiService>();
             services.AddScoped<ILogger, Logger<PropertyApiService>>();
+            services.AddScoped<IRepository, EFRepository>();
+
+            services.AddAutoMapper(m => m.AddProfile<AutoMapping>(), typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

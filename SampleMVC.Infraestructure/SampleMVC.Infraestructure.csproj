@@ -66,6 +66,11 @@
     <Compile Include="Data\SampleMvcContext.cs" />
     <Compile Include="Interfaces\IPropertyApiService.cs" />
     <Compile Include="Interfaces\IPropertyRepository.cs" />
+    <Compile Include="Migrations\202103141854563_Initial.cs" />
+    <Compile Include="Migrations\202103141854563_Initial.designer.cs">
+      <DependentUpon>202103141854563_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Api\ApiAddress.cs" />
     <Compile Include="Models\Api\ApiApplianceOwnership.cs" />
     <Compile Include="Models\Api\ApiFinancial.cs" />
@@ -95,7 +100,11 @@
       <Name>SmapleMVC.SharedKernel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202103141854563_Initial.resx">
+      <DependentUpon>202103141854563_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

@@ -7,20 +7,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using SampleMVC.Core.Entities;
 
 namespace SampleMVC.Infraestructure.Api
 {
     public class PropertyApiService : IPropertyApiService
     {
-        //private readonly ILogger<PropertyApiService> _logger;
         private readonly RestClient _client = new RestClient("https://samplerspubcontent.blob.core.windows.net/public/properties.json");
-
-        /*
-        public PropertyApiService(ILogger<PropertyApiService> logger)
-        {
-            _logger = logger;
-        }
-        */
 
         public async Task<IList<Property>> GetPropertyListFromApiAsync()
         {
@@ -40,10 +33,7 @@ namespace SampleMVC.Infraestructure.Api
                 YearBuilt = item.physical?.yearBuilt?.ToString(CultureInfo.InvariantCulture)
             }).ToList();
 
-            //_logger.LogWarning("Finalize parsing collection data from api");
-
             return propertyList;
-
         }
     }
 }

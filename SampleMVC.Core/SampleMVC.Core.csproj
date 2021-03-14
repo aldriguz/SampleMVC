@@ -44,27 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Api\Address.cs" />
-    <Compile Include="Entities\Api\ApplianceOwnership.cs" />
-    <Compile Include="Entities\Api\GoogleMapOption.cs" />
-    <Compile Include="Entities\Api\Financial.cs" />
-    <Compile Include="Entities\Api\FloorPlan.cs" />
-    <Compile Include="Entities\Api\Lease.cs" />
-    <Compile Include="Entities\Api\LeaseSummary.cs" />
-    <Compile Include="Entities\Api\Photo.cs" />
-    <Compile Include="Entities\Api\Physical.cs" />
     <Compile Include="Entities\Property.cs" />
-    <Compile Include="Entities\Api\Property.cs" />
-    <Compile Include="Entities\Api\Resources.cs" />
-    <Compile Include="Entities\Api\Score.cs" />
-    <Compile Include="Entities\Api\ThreeDRendering.cs" />
-    <Compile Include="Entities\Api\UtilitiesOwnership.cs" />
-    <Compile Include="Entities\Api\Valuation.cs" />
     <Compile Include="Entities\PropertyList.cs" />
-    <Compile Include="Interfaces\IPropertyApiService.cs" />
     <Compile Include="Interfaces\IPropertyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\PropertyApiService.cs" />
     <Compile Include="Services\PropertyService.cs" />
   </ItemGroup>
   <ItemGroup>

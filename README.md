@@ -23,7 +23,7 @@ Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=SampleMvcDb;Integrated Secur
 3. Run the script from "Database\01_CreateTableProperties.sql" folder
 4. Make sure that script has been executed correctly
 5. Open solution (.sln) with Visual Studio
-6. Now run the proyect using Visual Studio
+6. Now run the proyect using Visual Studio (make sure that web app is init project)
 7. Try adding a property item to the database by click on "Save" button
 
 

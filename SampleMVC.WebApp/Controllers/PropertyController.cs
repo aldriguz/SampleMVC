@@ -39,14 +39,7 @@ namespace SampleMVC.WebApp.Controllers
         {
             try
             {
-                var property = new Property()
-                {
-                    Address = item.Address,
-                    GrossYield = item.GrossYield,
-                    ListPrice = item.ListPrice,
-                    MonthlyRent = item.MonthlyRent,
-                    YearBuilt = item.YearBuilt
-                };
+                var property = _mapper.Map<Property>(item);
 
                 await _repository.AddAsync(property);
                 return Ok(property);

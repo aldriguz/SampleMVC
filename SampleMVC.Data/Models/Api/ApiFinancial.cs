@@ -1,9 +1,11 @@
 ﻿using System;
 
 namespace SampleMVC.Infraestructure.Models.Api
-{
+{    
     public class ApiFinancial
     {
+        private const int monthsNumber = 12;
+
         public object capRate { get; set; }
         public string occupancy { get; set; }
         public bool? isSection8 { get; set; }
@@ -22,5 +24,12 @@ namespace SampleMVC.Infraestructure.Models.Api
         public double? yearlyInsuranceCost { get; set; }
         public double? yearlyPropertyTaxes { get; set; }
         public bool? isCashOnly { get; set; }
+
+        public double GetGrossYield()
+        {
+            return (monthlyRent ?? 0 * monthsNumber) / listPrice ?? 1;
+        }
     }
+
+    
 }

@@ -24,9 +24,9 @@
             <tr>
                 <th>@item.Address</th>
                 <td>@item.YearBuilt</td>
-                <td>@item.ListPrice?.ToStringFormat()</td>
-                <td>@item.MonthlyRent?.ToStringFormat()</td>
-                <td>@item.GrossYield?.ToStringFormat()</td>
+                <td>@item.ListPrice?.ToStringCurrency()</td>
+                <td>@item.MonthlyRent?.ToStringCurrency()</td>
+                <td>@item.GrossYield?.ToStringPercent()</td>
                 <td><a href="#" class="btn btn-info" onclick="insertProperty(`@item.Address`, `@item.YearBuilt`, `@item.ListPrice`, `@item.MonthlyRent`, `@item.GrossYield`)">Save</a></td>
             </tr>
         }

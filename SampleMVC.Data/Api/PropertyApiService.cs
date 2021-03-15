@@ -23,13 +23,16 @@ namespace SampleMVC.Infraestructure.Api
 
             ApiRoot apiRootCollection = JsonConvert.DeserializeObject<ApiRoot>(response.Content);
 
+            if (apiRootCollection == null)
+                return new List<Property>();
+
             var propertyList = apiRootCollection.properties.Select(item => new Property
             {
                 Id = item.id ?? 0,
                 Address = item.address?.ToString(),
-                GrossYield = item.financial?.netYield,
-                ListPrice = item.financial?.listPrice,
-                MonthlyRent = item.financial?.monthlyRent,
+                GrossYield = item.financial?.GetGrossYield(),
+                ListPrice = item.financial?.listPrice ?? 0,
+                MonthlyRent = item.financial?.monthlyRent ?? 0,
                 YearBuilt = item.physical?.yearBuilt?.ToString(CultureInfo.InvariantCulture)
             }).ToList();
 

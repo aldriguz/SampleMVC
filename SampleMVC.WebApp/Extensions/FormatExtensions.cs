@@ -7,9 +7,14 @@ namespace SampleMVC.WebApp.Extensions
 {
     public static class FormatExtensions
     {
-        public static string ToStringFormat(this double number)
+        public static string ToStringCurrency(this double number)
         {
             return number.ToString("C");
+        }
+
+        public static string ToStringPercent(this double number)
+        {
+            return number.ToString("P");
         }
     }
 }

@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using SampleMVC.Core.Entities;
 using SampleMVC.Infraestructure.Interfaces;
 using SampleMVC.WebApp.Dtos;
-using SmapleMVC.SharedKernel.Interfaces;
+using SmapleMVC.Core.Interfaces;
+using System;
 using System.Collections.Generic;
-//using SampleMVC.Infraestructure.Models;
 using System.Threading.Tasks;
 
 namespace SampleMVC.WebApp.Controllers
@@ -21,17 +21,11 @@ namespace SampleMVC.WebApp.Controllers
             _propertyApiService = propertyApiService;
             _repository = repository;
             _mapper = mapper;
-        }
-
-        // GET: ApiMicrosoftController
-        public ActionResult Index()
-        {
-            return View();
-        }
+        }       
 
         [HttpGet]
         [Route("/")]
-        public async Task<IActionResult> GetAllProperties()
+        public async Task<IActionResult> Index()
         {
             var response = await _propertyApiService.GetPropertyListFromApiAsync();
             var viewData = _mapper.Map<List<PropertyDto>>(response);
@@ -43,17 +37,25 @@ namespace SampleMVC.WebApp.Controllers
         [Route("add")]
         public async Task<IActionResult> AddProperty([FromBody] PropertyDto item)
         {
-            var property = new Property()
+            try
             {
-                Address = item.Address,
-                GrossYield = item.GrossYield,
-                ListPrice = item.ListPrice,
-                MonthlyRent = item.MonthlyRent,
-                YearBuilt = item.YearBuilt
-            };
+                var property = new Property()
+                {
+                    Address = item.Address,
+                    GrossYield = item.GrossYield,
+                    ListPrice = item.ListPrice,
+                    MonthlyRent = item.MonthlyRent,
+                    YearBuilt = item.YearBuilt
+                };
 
-            await _repository.AddAsync(property);
-            return Ok(property);
+                await _repository.AddAsync(property);
+                return Ok(property);
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+            
         }
     }
 }

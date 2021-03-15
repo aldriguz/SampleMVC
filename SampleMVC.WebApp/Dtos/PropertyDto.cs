@@ -1,5 +1,8 @@
-﻿namespace SampleMVC.WebApp.Dtos
+﻿using System;
+
+namespace SampleMVC.WebApp.Dtos
 {
+    [Serializable]
     public class PropertyDto
     {
         public string Address { get; set; }

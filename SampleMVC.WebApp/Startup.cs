@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
 using SampleMVC.Infraestructure.Interfaces;
 using SampleMVC.Infraestructure.Api;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
-using SmapleMVC.SharedKernel.Interfaces;
+using SmapleMVC.Core.Interfaces;
 using SampleMVC.Infraestructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace SampleMVC.WebApp
 {
@@ -27,7 +27,7 @@ namespace SampleMVC.WebApp
         {
             services.AddControllersWithViews();
 
-            //services.AddDbContext<SampleMvcContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SampleMVC")));
+            services.AddDbContext<SampleMvcContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SampleMVC")));
 
             services.AddScoped<IPropertyApiService, PropertyApiService>();
             services.AddScoped<ILogger, Logger<PropertyApiService>>();

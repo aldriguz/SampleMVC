@@ -1,11 +1,12 @@
-﻿@model IList<SampleMVC.WebApp.Dtos.PropertyDto>
+﻿@using SampleMVC.WebApp.Extensions
+@model IList<SampleMVC.WebApp.Dtos.PropertyDto>
 
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>List of properties</h1>
-<hr />
+
 <table class="table">
     <thead>
         <tr>
@@ -14,18 +15,20 @@
             <th scope="col">List Price</th>
             <th scope="col">Monthly Rent</th>
             <th scope="col">Gross Yield</th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <th>@item.Address</th>
-            <td>@item.YearBuilt</td>
-            <td>@item.ListPrice</td>
-            <td>@item.MonthlyRent</td>
-            <td>@item.GrossYield</td>
-        </tr>
+            <tr>
+                <th>@item.Address</th>
+                <td>@item.YearBuilt</td>
+                <td>@item.ListPrice?.ToStringFormat()</td>
+                <td>@item.MonthlyRent?.ToStringFormat()</td>
+                <td>@item.GrossYield?.ToStringFormat()</td>
+                <td><a href="#" class="btn btn-info" onclick="insertProperty(`@item.Address`, `@item.YearBuilt`, `@item.ListPrice`, `@item.MonthlyRent`, `@item.GrossYield`)">Save</a></td>
+            </tr>
         }
     </tbody>
 </table>
